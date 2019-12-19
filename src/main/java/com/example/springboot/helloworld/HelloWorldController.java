@@ -1,4 +1,4 @@
-package com.example.springboot;
+package com.example.springboot.helloworld;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
