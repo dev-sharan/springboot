@@ -13,12 +13,25 @@ public class TodoHardcodedService {
 
     static {
         todos.add(new Todo(++idCounter, "manish" , "Learn code", new Date(), false));
-        todos.add(new Todo(++idCounter, "nitish" , "Learn springboot", new Date(), false));
-        todos.add(new Todo(++idCounter, "yogesh" , "Learn Angular", new Date(), false));
+        todos.add(new Todo(++idCounter, "nitish" , "Learn springboot", new Date((new Date()).getTime() + 86400000), false));
+        todos.add(new Todo(++idCounter, "yogesh" , "Learn Angular", new Date((new Date()).getTime() - 86400000), false));
     }
 
     public List<Todo> findAll() {
         return todos;
+    }
+
+    
+    public Todo save(Todo todo) {
+        if(todo.getId()==-1 || todo.getId() == 0) {
+            todo.setId(++idCounter);
+            todo.setUsername("manish");
+            todos.add(todo);
+        } else {
+            deleteById(todo.getId());
+            todos.add(todo);
+        }
+        return todo;
     }
 
     public Todo deleteById(long id) {
